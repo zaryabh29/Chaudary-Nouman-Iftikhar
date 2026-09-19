@@ -1741,12 +1741,24 @@ footer {
   /* Timeline */
   .timeline { padding: 0 0 0 40px; }
   .timeline-line { left: 12px; }
-  .timeline-item { grid-template-columns: 24px 1fr; gap: 0 20px; }
-  .timeline-item:nth-child(even) .timeline-content { order: 0; text-align: left; }
-  .timeline-item:nth-child(even) .timeline-spacer { display: none; }
-  .timeline-spacer { display: none; }
-  .timeline-dot-wrap { justify-content: flex-start; padding-top: 2px; }
-  .timeline-content { padding: 0 0 0 8px; }
+  .timeline-item { grid-template-columns: 24px 1fr !important; gap: 0 20px; }
+  .timeline-spacer, .timeline-item:nth-child(even) .timeline-spacer { display: none !important; }
+  
+  .timeline-item .timeline-content,
+  .timeline-item:nth-child(even) .timeline-content { 
+    grid-column: 2 !important; 
+    grid-row: 1 !important;
+    text-align: left !important; 
+    padding: 0 0 0 8px;
+  }
+  
+  .timeline-item .timeline-dot-wrap,
+  .timeline-item:nth-child(even) .timeline-dot-wrap { 
+    grid-column: 1 !important; 
+    grid-row: 1 !important;
+    justify-content: flex-start; 
+    padding-top: 2px; 
+  }
 
   /* Ventures */
   .ventures-grid { grid-template-columns: 1fr; }
