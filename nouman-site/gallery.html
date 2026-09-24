@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gallery — Ch. Nouman Iftikhar</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  /* --- Gallery Page Luxury Styles --- */
+  body {
+    background-color: var(--ink); /* Dark, premium background */
+    color: var(--bone);
+  }
+  
+  .nav {
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .pg-header {
+    padding: 140px 0 60px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .pg-header .eyebrow {
+    color: var(--rose);
+    margin-bottom: 16px;
+  }
+  
+  .pg-header .h1 {
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  
+  .pg-header p {
+    font-size: 20px;
+    color: var(--ash);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Masonry Grid */
+  .pg-grid {
+    column-count: 1;
+    column-gap: 24px;
+    padding-bottom: 120px;
+  }
+  @media (min-width: 768px) { .pg-grid { column-count: 2; } }
+  @media (min-width: 1100px) { .pg-grid { column-count: 3; column-gap: 32px; } }
+  @media (min-width: 1600px) { .pg-grid { column-count: 4; } }
+
+  .pg-item {
+    break-inside: avoid;
+    margin-bottom: 24px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--obsidian);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
+  }
+  @media (min-width: 1100px) {
+    .pg-item { margin-bottom: 32px; }
+  }
+
+  .pg-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .pg-item img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 700ms var(--ease-out), filter 700ms ease;
+    filter: saturate(0.85) brightness(0.9);
+  }
+
+  .pg-item:hover img {
+    transform: scale(1.04);
+    filter: saturate(1.1) brightness(0.7);
+  }
+
+  .pg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(12, 12, 14, 0.9) 0%, rgba(12, 12, 14, 0.2) 50%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 32px;
+    opacity: 0;
+    transition: opacity 400ms ease;
+  }
+
+  .pg-item:hover .pg-overlay {
+    opacity: 1;
+  }
+
+  .pg-caption {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--bone);
+    line-height: 1.3;
+    transform: translateY(16px);
+    transition: transform 400ms var(--ease-out);
+  }
+
+  .pg-item:hover .pg-caption {
+    transform: translateY(0);
+  }
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+
+<body>
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a class="nav__wordmark" href="index.html#top">Ch. Nouman Iftikhar</a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="index.html#about">About</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#media">Media</a>
+      <a href="gallery.html" style="color: var(--rose);">Gallery</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="btn btn--outline nav__cta" href="index.html#contact">Book a consultation</a>
+    <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav class="menu__links" aria-label="Sections">
+    <a href="index.html#about">About</a>
+    <a href="index.html#legacy">Legacy</a>
+    <a href="index.html#ventures">Ventures</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#recognition">Recognition</a>
+    <a href="index.html#perspective">Perspective</a>
+    <a href="index.html#media">Media</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+  <div class="menu__foot">
+    <a class="btn btn--solid" href="index.html#contact">Book a consultation</a>
+    <p class="menu__meta">+92 325 4441111 · ceo@mgcdevelopments.com</p>
+  </div>
+</div>
+
+<main>
+  <div class="container pg-header">
+    <p class="eyebrow">Portfolio &amp; Moments</p>
+    <h1 class="h1">A vision in focus.</h1>
+    <p class="prose">A curated collection of project milestones, architectural triumphs, and strategic leadership behind MGC Developments.</p>
+  </div>
+  
+  <div class="container pg-grid" id="gallery-grid">
+    <!-- Rendered via JS -->
+  </div>
+</main>
+
+<footer class="footer" style="border-top: 1px solid rgba(255,255,255,0.05);">
+  <div class="container footer__top">
+    <div class="footer__brand">
+      <span class="footer__wordmark">Ch. Nouman Iftikhar</span>
+      <span class="footer__desc">Founder &amp; CEO, MGC Developments</span>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <span>© <span data-year>2026</span> Ch. Nouman Iftikhar</span>
+  </div>
+</footer>
+
+<script>
+  // Luxury real-estate and executive captions
+  const captions = [
+    "Overseeing construction progress on site.",
+    "Reviewing architectural blueprints and design plans.",
+    "Meeting with stakeholders and key investors.",
+    "Site inspection at the MGC Jewel development.",
+    "Finalizing interior design concepts and materials.",
+    "Touring the Liberty Terraces project.",
+    "Discussing structural details with the engineering team.",
+    "Celebrating a major project milestone with the crew.",
+    "Ensuring strict quality control on the construction site.",
+    "Showcasing the latest development updates to the public.",
+    "Collaborating with the design team on future projects.",
+    "Executive briefing on upcoming strategic launches.",
+    "Visionary leadership in urban development.",
+    "Redefining the skyline with modern architecture."
+  ];
+
+  const grid = document.getElementById('gallery-grid');
+  
+  // Render all 50 images dynamically
+  for (let i = 1; i <= 50; i++) {
+    const item = document.createElement('div');
+    item.className = 'pg-item';
+    
+    // Pick a random caption
+    const randomCaption = captions[Math.floor(Math.random() * captions.length)];
+    
+    // Using masonry layout, we don't crop the aspect ratio; we let the image define its height
+    item.innerHTML = `
+      <img src="assets/img/${i}.jpg" alt="Gallery image ${i}" loading="lazy">
+      <div class="pg-overlay">
+        <div class="pg-caption">${randomCaption}</div>
+      </div>
+    `;
+    grid.appendChild(item);
+  }
+
+  // Staggered smooth scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Add a slight delay based on horizontal position to create a staggering effect in the masonry grid
+        setTimeout(() => {
+          entry.target.classList.add('is-visible');
+        }, Math.random() * 150);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.pg-item').forEach(item => observer.observe(item));
+</script>
+<script src="js/main.js" defer></script>
+</body>
+</html>
